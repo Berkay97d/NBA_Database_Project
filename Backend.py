@@ -38,4 +38,22 @@ def view():
     return rows
 
 
+def search(team_id="", fname="", lname="", age="", salary="", position="", weight="", height="", avr_point="", avr_asist="", avr_rebound=""):
+    conn = sqlite3.connect("players.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM players WHERE team_id=? OR fname=? OR lname=? OR age=? OR salary=? OR position=? OR weight=? OR height=? OR avr_point=? OR avr_asist=? OR avr_rebound=?",
+                (team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound))
+    rows = cur.fetchall()
+    conn.close()
+    return rows
+
+
+def delete(id):
+    conn = sqlite3.connect("players.db")
+    cur = conn.cursor()
+    cur.execute()
+    conn.commit()
+    conn.close()
+
+
 connect()
