@@ -43,8 +43,8 @@ def connect():
     conn.close()
 
 
-def insert(team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound):
-    conn = sqlite3.connect("players.db")
+def insert_player(team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound):
+    conn = sqlite3.connect("NBA.db")
     cur = conn.cursor()
     cur.execute("INSERT INTO players VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?)",
                 (team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound))
@@ -52,8 +52,8 @@ def insert(team_id, fname, lname, age, salary, position, weight, height, avr_poi
     conn.close()
 
 
-def view():
-    conn = sqlite3.connect("players.db")
+def view_player():
+    conn = sqlite3.connect("NBA.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM players")
     rows = cur.fetchall()
@@ -61,8 +61,8 @@ def view():
     return rows
 
 
-def search(team_id="", fname="", lname="", age="", salary="", position="", weight="", height="", avr_point="", avr_asist="", avr_rebound=""):
-    conn = sqlite3.connect("players.db")
+def search_player(team_id="", fname="", lname="", age="", salary="", position="", weight="", height="", avr_point="", avr_asist="", avr_rebound=""):
+    conn = sqlite3.connect("NBA.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM players WHERE team_id=? OR fname=? OR lname=? OR age=? OR salary=? OR position=? OR weight=? OR height=? OR avr_point=? OR avr_asist=? OR avr_rebound=?",
                 (team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound))
@@ -71,13 +71,22 @@ def search(team_id="", fname="", lname="", age="", salary="", position="", weigh
     return rows
 
 
-def delete(id):
-    conn = sqlite3.connect("players.db")
+def delete_player(id):
+    conn = sqlite3.connect("NBA.db")
     cur = conn.cursor()
     cur.execute("DELETE FROM players WHERE id=?", (id,))
     conn.commit()
     conn.close()
 
+
+def update_player(id, team_id, fname, lname, age, salary, position, weight, height, avr_point, avr_asist, avr_rebound):
+    conn = sqlite3.connect("NBA.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE players SET team_id=?, fname=?, lname=?, age=?, salary=?, position=?, weight=?, height=?, avr_point=?, avr_asist=?, avr_rebound=? WHERE id=?", (id,team_id,fname,lname,age,salary,position,weight,height,avr_point,avr_asist,avr_rebound,id))
+    conn.commit()
+    conn.close()
+
+#TODO team,staff,dependent için fonkiyonlar eklenecek!
 
 
 connect()
