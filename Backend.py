@@ -88,5 +88,5 @@ def update_player(id, team_id, fname, lname, age, salary, position, weight, heig
 
 #TODO team,staff,dependent için fonkiyonlar eklenecek!
 
-
+insert_player(1, "berkay", "dindar", 25, 15000, "pg",15,15,15,15,15)
 connect()
