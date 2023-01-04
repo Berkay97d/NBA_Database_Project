@@ -51,7 +51,7 @@ def search(team_id="", fname="", lname="", age="", salary="", position="", weigh
 def delete(id):
     conn = sqlite3.connect("players.db")
     cur = conn.cursor()
-    cur.execute()
+    cur.execute("DELETE FROM players WHERE id=?", (id,))
     conn.commit()
     conn.close()
 
