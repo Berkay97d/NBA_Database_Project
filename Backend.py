@@ -2,7 +2,7 @@ import sqlite3
 
 
 def connect():
-    conn = sqlite3.connect("players.db")
+    conn = sqlite3.connect("NBA.db")
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS players(id INTEGER PRIMARY KEY, "
                 "                                   team_id INTEGER,"
@@ -16,6 +16,29 @@ def connect():
                 "                                   avr_point INTEGER,"
                 "                                   avr_asist INTEGER,"
                 "                                   avr_rebound INTEGER )")
+
+    cur.execute("CREATE TABLE IF NOT EXISTS teams(id INTEGER PRIMARY KEY, "
+                "                                   captain_id INTEGER,"
+                "                                   coach_id INTEGER, "
+                "                                   team_name text,"
+                "                                   city text)")
+
+    cur.execute("CREATE TABLE IF NOT EXISTS staffs(id INTEGER PRIMARY KEY, "
+                "                                   team_id INTEGER,"
+                "                                   role text, "
+                "                                   fname text,"
+                "                                   lname text,"
+                "                                   salary INTEGER,"
+                "                                   sex text)")
+
+    cur.execute("CREATE TABLE IF NOT EXISTS dependents(id INTEGER PRIMARY KEY, "
+                "                                   dependent_id INTEGER,"
+                "                                   fname text, "
+                "                                   lname text,"
+                "                                   depenpent_fname text,"
+                "                                   depenpent_lname text,"
+                "                                   relationship text,"
+                "                                   sex text)")
     conn.commit()
     conn.close()
 
@@ -54,6 +77,7 @@ def delete(id):
     cur.execute("DELETE FROM players WHERE id=?", (id,))
     conn.commit()
     conn.close()
+
 
 
 connect()
