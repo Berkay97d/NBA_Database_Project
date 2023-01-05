@@ -58,7 +58,7 @@ def add_command():
     list1.delete(0, END)
     view_command()
 
-    
+
 def delete_command():
     Backend.delete_player(selected_tuple[0])
     view_command()
