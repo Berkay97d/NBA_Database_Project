@@ -1,7 +1,6 @@
 from tkinter import *
-
 import Backend
-from Backend import *
+
 
 
 def get_selected_row(event):
@@ -62,6 +61,12 @@ def add_command():
 def delete_command():
     Backend.delete_player(selected_tuple[0])
     view_command()
+
+
+def update_command():
+    Backend.update_player(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4],
+                          selected_tuple[5], selected_tuple[6], selected_tuple[7], selected_tuple[8], selected_tuple[9],
+                          selected_tuple[10], selected_tuple[11])
 
 
 window = Tk()
@@ -172,7 +177,7 @@ b2.grid(row=7, column=3)
 b3 = Button(window, text="Add", width=12, command=add_command)
 b3.grid(row=8, column=3)
 
-b4 = Button(window, text="Update", width=12)
+b4 = Button(window, text="Update", width=12, command=update_command)
 b4.grid(row=9, column=3)
 
 b5 = Button(window, text="Delete", width=12, command=delete_command)
