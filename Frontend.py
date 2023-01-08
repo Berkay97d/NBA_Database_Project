@@ -478,7 +478,7 @@ def search_command_dependent():
         list1_dependent.insert(END, row)
 
 
-def add_command():
+def add_command_dependent():
     Backend.insert_dependent(depent_id_text.get(), dependent_first_name_text.get(),
                              dependent_last_name_text.get(), relationship_text.get(), dependent_sex_text.get())
 
@@ -560,7 +560,7 @@ b1_d.grid(row=6, column=3)
 b2_d = Button(window_dependet, text="Search", width=12, command=search_command_dependent)
 b2_d.grid(row=7, column=3)
 
-b3_d = Button(window_dependet, text="Add", width=12, command=add_command)
+b3_d = Button(window_dependet, text="Add", width=12, command=add_command_dependent)
 b3_d.grid(row=8, column=3)
 
 b4_d = Button(window_dependet, text="Update", width=12, command=update_command_dependent)
