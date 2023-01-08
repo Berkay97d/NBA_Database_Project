@@ -2,7 +2,7 @@ from tkinter import *
 import Backend
 
 
-
+### PLAYERS FRONTEND ###
 def get_selected_row(event):
     global selected_tuple
     index=list1.curselection()[0]
@@ -187,6 +187,9 @@ b5.grid(row=10, column=3)
 b6 = Button(window, text="Close", width=12, command=window.destroy)
 b6.grid(row=11, column=3)
 
+
+### TEAMS FRONTEND ###
+
 def get_selected_row_team(event):
     global selected_tuple_team
     index=list1_t.curselection()[0]
@@ -303,6 +306,8 @@ b5_t.grid(row=10, column=3)
 b6_t = Button(team_windows, text="Close", width=12, command=team_windows.destroy)
 b6_t.grid(row=11, column=3)
 
+
+### STAFF FRONTEND ###
 
 def get_selected_row_staff(event):
     global selected_tuple_staff
@@ -439,6 +444,8 @@ b5_s.grid(row=10, column=3)
 b6_s = Button(staff_window, text="Close", width=12, command=staff_window.destroy)
 b6_s.grid(row=11, column=3)
 
+
+### DEPENDET FRONTEND ###
 
 def get_selected_row_dependent(event):
     global selected_tuple_dependent
